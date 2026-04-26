@@ -11,26 +11,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,600;1,8..60,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Apple-inspired palette (clair, premium, spacieux) */
   --bg: #FAFAFA;
   --bg-2: #F2F2F2;
   --bg-3: #E8E8E8;
-  --paper: #FCFBF8;       /* hint papier crème pour zones éditoriales (touche Claude) */
+  --paper: #FCFBF8;
 
-  /* Texte - hiérarchie Apple stricte */
-  --ink: #1D1D1F;          /* noir Apple */
+  --ink: #1D1D1F;
   --ink-2: #424245;
   --ink-3: #6E6E73;
   --ink-4: #86868B;
   --ink-5: #A1A1A6;
 
-  /* Bleu iOS (l'accent demandé - même que l'app) */
   --blue: #0A84FF;
   --blue-deep: #0066CC;
   --blue-soft: #E5F1FF;
   --blue-glow: rgba(10, 132, 255, 0.25);
 
-  /* Lignes très subtiles - Apple style */
   --rule: rgba(29, 29, 31, 0.08);
   --rule-2: rgba(29, 29, 31, 0.14);
 
@@ -52,7 +48,6 @@ body {
   position: relative;
 }
 
-/* === LAYER FOND ANIMÉ GLOBAL === */
 .bg-layer {
   position: fixed;
   inset: 0;
@@ -118,7 +113,6 @@ body {
   50% { transform: translate(60px, -120px); }
 }
 
-/* Grain texture papier (touche Claude) */
 .bg-layer::before {
   content: '';
   position: absolute;
@@ -129,12 +123,79 @@ body {
   pointer-events: none;
 }
 
-/* Tout le contenu doit être au dessus des animations */
 nav, section, footer { position: relative; z-index: 1; }
 
 img, svg { display: block; max-width: 100%; }
 
-/* === RÈGLE GLOBALE : italiques serif (style Claude) en GRAS === */
+/* ============ CADRE IPHONE RÉALISTE ============ */
+.iphone-frame {
+  width: 290px;
+  aspect-ratio: 9 / 19.5;
+  background: linear-gradient(150deg, #2c2c2e 0%, #1c1c1e 50%, #0a0a0c 100%);
+  border-radius: 50px;
+  padding: 9px;
+  position: relative;
+  box-shadow:
+    0 0 0 1.5px #3a3a3c,
+    0 0 0 3px #0a0a0a,
+    0 60px 100px -25px rgba(0,0,0,0.55),
+    0 25px 50px -15px rgba(10,132,255,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+/* Reflet subtil en haut du téléphone */
+.iphone-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.10) 0%, transparent 35%);
+  pointer-events: none;
+  z-index: 1;
+}
+/* Boutons latéraux subtils */
+.iphone-frame::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 110px;
+  width: 3px;
+  height: 60px;
+  background: linear-gradient(90deg, #1a1a1c, #2a2a2c);
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 80px 0 #1a1a1c, 0 80px 0 -1px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 42px;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+.iphone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Dynamic Island masquée — les screenshots ont leur propre status bar */
+.iphone-island {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .iphone-frame {
+    width: 240px;
+    border-radius: 42px;
+    padding: 7px;
+  }
+  .iphone-screen {
+    border-radius: 36px;
+  }
+}
+
 em, .serif-italic, .editorial,
 h1 em, h2 em, h3 em, p em,
 .feature-tag-text em, .pricing-left p em, .pricing-card-eyebrow,
@@ -146,7 +207,6 @@ h1 em, h2 em, h3 em, p em,
   font-weight: 700 !important;
 }
 
-/* === Typographie === */
 .serif {
   font-family: 'Source Serif 4', serif;
   font-variation-settings: 'opsz' 32;
@@ -191,7 +251,7 @@ h1, h2, h3 {
   margin: 0;
 }
 
-/* ============ NAV (style Apple) ============ */
+/* ============ NAV ============ */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -256,13 +316,16 @@ h1, h2, h3 {
   .nav-links { display: none; }
 }
 
-/* ============ HERO ============ */
+/* ============ HERO — PLEIN ÉCRAN, COMPACT ============ */
 .hero {
-  padding: 160px 28px 120px;
+  min-height: 100vh;
+  min-height: 100svh; /* mobile: prend en compte la barre du navigateur */
+  padding: 90px 28px 40px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
-/* Glow bleu subtil en arrière-plan, signature Frizz */
 .hero::before {
   content: '';
   position: absolute;
@@ -280,22 +343,23 @@ h1, h2, h3 {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 .hero-eyebrow-wrap {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 7px 14px;
+  gap: 9px;
+  padding: 6px 13px;
   background: var(--blue-soft);
   border-radius: 100px;
-  margin-bottom: 36px;
+  margin-bottom: 26px;
 }
 .hero-eyebrow-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--blue);
-  box-shadow: 0 0 12px var(--blue-glow);
+  box-shadow: 0 0 10px var(--blue-glow);
   animation: pulse 2s ease-in-out infinite;
 }
 @keyframes pulse {
@@ -303,16 +367,16 @@ h1, h2, h3 {
   50% { opacity: 0.6; }
 }
 .hero-eyebrow-wrap .eyebrow {
-  font-size: 12.5px;
+  font-size: 11.5px;
   letter-spacing: -0.005em;
 }
 .hero h1 {
-  font-size: clamp(52px, 8.5vw, 116px);
+  font-size: clamp(38px, 6.2vw, 84px);
   font-weight: 600;
-  margin-bottom: 32px;
-  letter-spacing: -0.05em;
-  max-width: 1100px;
-  line-height: 1;
+  margin-bottom: 22px;
+  letter-spacing: -0.045em;
+  max-width: 1000px;
+  line-height: 1.02;
 }
 .hero h1 em {
   font-family: 'Source Serif 4', serif;
@@ -322,13 +386,13 @@ h1, h2, h3 {
   letter-spacing: -0.03em;
 }
 .hero-lede {
-  font-size: clamp(19px, 1.6vw, 24px);
+  font-size: clamp(15px, 1.25vw, 18px);
   line-height: 1.5;
   color: var(--ink-3);
   font-weight: 400;
-  max-width: 720px;
-  margin-bottom: 50px;
-  letter-spacing: -0.018em;
+  max-width: 620px;
+  margin-bottom: 32px;
+  letter-spacing: -0.015em;
 }
 .hero-lede em {
   font-family: 'Source Serif 4', serif;
@@ -338,17 +402,17 @@ h1, h2, h3 {
 }
 .hero-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   align-items: center;
 }
 .btn-primary {
   background: var(--blue);
   color: #fff;
-  padding: 14px 24px;
+  padding: 12px 22px;
   border-radius: 100px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -363,18 +427,18 @@ h1, h2, h3 {
   box-shadow: 0 8px 28px rgba(10,132,255,0.40);
 }
 .btn-primary svg {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   transition: transform 0.3s;
 }
 .btn-primary:hover svg { transform: translateX(4px); }
 .btn-ghost {
   background: transparent;
   color: var(--ink);
-  padding: 14px 24px;
+  padding: 12px 22px;
   border-radius: 100px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   border: 1px solid var(--rule-2);
   transition: all 0.25s var(--t-fast);
@@ -386,50 +450,120 @@ h1, h2, h3 {
   border-color: var(--ink);
 }
 
-/* Méta-infos sous le hero (style Apple specs) */
 .hero-meta {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0;
-  margin-top: 80px;
-  padding-top: 40px;
+  margin-top: 50px;
+  padding-top: 26px;
   border-top: 1px solid var(--rule);
+  max-width: 560px;
 }
 .hero-meta-item {
-  padding: 0 24px;
+  padding: 0 22px;
   border-right: 1px solid var(--rule);
 }
 .hero-meta-item:first-child { padding-left: 0; }
 .hero-meta-item:last-child { border-right: 0; padding-right: 0; }
 .hero-meta-label {
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 500;
   letter-spacing: 0;
   color: var(--ink-3);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .hero-meta-value {
   font-family: 'Source Serif 4', serif;
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 400;
   color: var(--ink);
   letter-spacing: -0.015em;
 }
 .hero-meta-value em { font-style: italic; color: var(--blue); }
+/* Le tarif 29 € en gras Inter pour vraie emphase */
+.hero-meta-value .price-strong {
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  color: var(--ink) !important;
+  font-size: 1.1em;
+  letter-spacing: -0.025em;
+}
 
-@media (max-width: 760px) {
-  .hero { padding: 120px 24px 70px; }
+/* Tablettes */
+@media (max-width: 960px) {
+  .hero {
+    padding: 80px 24px 30px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 7vw, 60px);
+    margin-bottom: 18px;
+  }
+  .hero-lede {
+    font-size: 15px;
+    margin-bottom: 26px;
+  }
+  .hero-meta {
+    margin-top: 36px;
+    padding-top: 22px;
+  }
+  .hero-meta-value { font-size: 15px; }
+  .hero-meta-item { padding: 0 14px; }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+  .hero {
+    padding: 76px 20px 24px;
+  }
+  .hero-eyebrow-wrap {
+    margin-bottom: 18px;
+    padding: 5px 11px;
+  }
+  .hero-eyebrow-wrap .eyebrow {
+    font-size: 10.5px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 8.5vw, 42px);
+    margin-bottom: 14px;
+    line-height: 1.05;
+  }
+  .hero-lede {
+    font-size: 13.5px;
+    margin-bottom: 20px;
+    line-height: 1.45;
+  }
+  .btn-primary, .btn-ghost {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
   .hero-meta {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 18px;
   }
   .hero-meta-item {
     padding: 0;
     border-right: 0;
     border-bottom: 1px solid var(--rule);
-    padding-bottom: 24px;
+    padding-bottom: 12px;
   }
   .hero-meta-item:last-child { border-bottom: 0; padding-bottom: 0; }
+  .hero-meta-label { font-size: 10px; margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; }
+}
+
+/* Très petits écrans / paysage mobile */
+@media (max-height: 640px) and (max-width: 960px) {
+  .hero {
+    padding-top: 72px;
+    padding-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(26px, 5.5vw, 42px); margin-bottom: 12px; }
+  .hero-lede { margin-bottom: 18px; }
+  .hero-eyebrow-wrap { margin-bottom: 14px; }
+  .hero-meta { margin-top: 22px; padding-top: 16px; }
 }
 </style>
 </head>
@@ -461,11 +595,7 @@ h1, h2, h3 {
 <!-- === HERO === -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow-wrap">
-      <span class="hero-eyebrow-dot"></span>
-      <span class="eyebrow">Disponible en France &amp; Suisse · 2026</span>
-    </div>
-    <h1>Le menu QR pour<br>les <em>vrais</em> restaurants.</h1>
+    <h1>Une nouvelle façon<br>de <em>servir</em>.</h1>
     <p class="hero-lede">
       Vos clients commandent depuis leur téléphone. Vos serveurs gagnent <em>vingt minutes</em> par service. Votre cuisine reçoit chaque commande en temps réel. Et vous, vous voyez tout depuis votre tableau de bord.
     </p>
@@ -480,15 +610,11 @@ h1, h2, h3 {
     <div class="hero-meta">
       <div class="hero-meta-item">
         <div class="hero-meta-label">Tarif</div>
-        <div class="hero-meta-value"><em>29 €</em> par mois</div>
+        <div class="hero-meta-value"><span class="price-strong">29 €</span> par mois</div>
       </div>
       <div class="hero-meta-item">
         <div class="hero-meta-label">Engagement</div>
         <div class="hero-meta-value"><em>Aucun</em>, sans condition</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Mise en service</div>
-        <div class="hero-meta-value"><em>30</em> minutes, formation incluse</div>
       </div>
     </div>
   </div>
@@ -603,7 +729,6 @@ h1, h2, h3 {
 }
 .feature.dark .feature-list-num { color: #4DA9FF; }
 
-/* Visual side — iPhone avec halo bleu signature */
 .feature-visual {
   position: relative;
   display: flex;
@@ -627,20 +752,75 @@ h1, h2, h3 {
 .feature .iphone-frame {
   position: relative;
   z-index: 2;
-  --w: 300px;
-  --h: 620px;
-  transform: none;
+  width: 300px;
+  height: 620px;
+  background: #1D1D1F;
+  border-radius: 48px;
+  padding: 12px;
+  box-shadow:
+    0 0 0 2px #2A2A2C,
+    0 30px 60px -20px rgba(29, 29, 31, 0.45),
+    0 18px 36px -12px rgba(10, 132, 255, 0.18);
   animation: float-phone 8s ease-in-out infinite;
+  transition: transform 0.4s var(--t-fast);
 }
-.feature .iphone-frame:nth-child(odd) { transform: none; }
-.feature .iphone-frame:nth-child(even) { transform: none; }
-.feature .iphone-frame:hover { transform: translateY(-8px); animation-play-state: paused; }
+.feature.dark .iphone-frame {
+  background: #0A0A0B;
+  box-shadow:
+    0 0 0 2px #2A2A2C,
+    0 30px 60px -20px rgba(0, 0, 0, 0.6),
+    0 18px 36px -12px rgba(10, 132, 255, 0.30);
+}
+.feature .iphone-frame:hover {
+  animation-play-state: paused;
+  transform: translateY(-8px);
+}
+.iphone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 36px;
+  overflow: hidden;
+}
+.iphone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.iphone-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 28px;
+  background: #000;
+  border-radius: 100px;
+  z-index: 3;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
 @keyframes float-phone {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
 
-/* Petite carte de légende flottante - style Claude */
+@media (max-width: 600px) {
+  .feature .iphone-frame {
+    width: 260px;
+    height: 540px;
+    padding: 10px;
+    border-radius: 42px;
+  }
+  .iphone-screen { border-radius: 32px; }
+  .iphone-island {
+    width: 84px;
+    height: 24px;
+    top: 9px;
+  }
+}
+
 .feature-tag {
   position: absolute;
   background: var(--bg);
@@ -725,7 +905,7 @@ h1, h2, h3 {
       <div class="iphone-frame">
         <div class="iphone-screen">
           <div class="iphone-island"></div>
-          <img src="https://i.ibb.co/3mS0Zm26/IMG-3875.png" alt="Mode service Frizz">
+          <img src="https://i.ibb.co/C37kHRD8/IMG-3873.png" alt="Mode service Frizz">
         </div>
       </div>
     </div>
@@ -821,7 +1001,7 @@ h1, h2, h3 {
       <div class="iphone-frame">
         <div class="iphone-screen">
           <div class="iphone-island"></div>
-          <img src="https://i.ibb.co/C37kHRD8/IMG-3873.png" alt="Analytics Frizz">
+          <img src="https://i.ibb.co/3mS0Zm26/IMG-3875.png" alt="Analytics Frizz">
         </div>
       </div>
     </div>
@@ -901,7 +1081,6 @@ h1, h2, h3 {
   font-weight: 700 !important;
 }
 
-/* Tableau comparatif */
 .compare-table {
   background: var(--bg);
   border: 1px solid var(--rule-2);
@@ -933,7 +1112,6 @@ h1, h2, h3 {
   font-size: 15px;
 }
 
-/* Header row */
 .compare-row.head {
   background: var(--ink);
   color: var(--bg);
@@ -955,7 +1133,6 @@ h1, h2, h3 {
   text-transform: none;
 }
 
-/* Colonne Frizz mise en valeur */
 .compare-cell.frizz {
   background: linear-gradient(180deg, rgba(10,132,255,0.06), rgba(10,132,255,0.03));
   position: relative;
@@ -975,7 +1152,6 @@ h1, h2, h3 {
   opacity: 0.9;
 }
 
-/* Cells avec checks et X */
 .check {
   display: inline-flex;
   align-items: center;
@@ -1047,62 +1223,74 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
-/* Mobile : transforme en cartes empilées */
 @media (max-width: 960px) {
-  .compare { padding: 80px 20px; }
+  .compare { padding: 90px 16px; }
+  .compare-header { margin-bottom: 50px; }
+
+  /* Wrapper qui permet le scroll horizontal du tableau */
+  .compare-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -16px;
+    padding: 0 16px 12px;
+    scrollbar-width: thin;
+  }
+  .compare-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .compare-scroll::-webkit-scrollbar-thumb {
+    background: var(--rule-2);
+    border-radius: 100px;
+  }
+
+  /* Tableau gardé tel quel mais avec largeur min pour rester lisible */
   .compare-table {
-    border: none;
-    background: transparent;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    min-width: 720px;
   }
-  .compare-row {
-    grid-template-columns: 1fr;
-    border: 1px solid var(--rule-2);
-    border-radius: 16px;
-    background: var(--bg);
-    overflow: hidden;
-  }
-  .compare-row.head { display: none; }
-  .compare-row.body {
-    padding: 0;
-  }
+
+  /* Cellules plus compactes mais structure tableau préservée */
   .compare-cell {
-    padding: 14px 18px;
-    text-align: left;
-    border-right: 0;
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
+    padding: 14px 10px;
+    font-size: 12.5px;
   }
-  .compare-cell:last-child { border-bottom: 0; }
   .compare-cell.label {
-    background: var(--paper);
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--ink-3);
-    padding: 12px 18px;
+    font-size: 12.5px;
+    padding: 14px 12px;
   }
-  .compare-cell.label::after { display: none; }
-  .compare-cell:not(.label)::before {
-    content: attr(data-label);
-    font-size: 13px;
-    color: var(--ink-3);
-    font-weight: 500;
+
+  .compare-row.head .compare-cell {
+    padding: 18px 10px;
+    font-size: 17px;
   }
-  .compare-cell.frizz {
-    background: linear-gradient(90deg, rgba(10,132,255,0.08), rgba(10,132,255,0.02));
+  .compare-row.head .compare-cell.label {
+    font-size: 10px;
   }
-  .compare-cell.frizz::before {
-    color: var(--blue);
-    font-weight: 700;
+  .compare-row.head .compare-cell.frizz::after {
+    font-size: 12px;
+    margin-top: 4px;
   }
+
+  .price-tag { font-size: 17px; }
+  .price-tag .small { font-size: 10px; margin-top: 3px; }
+  .partial { font-size: 11.5px; }
+
+  .check, .cross {
+    width: 24px;
+    height: 24px;
+  }
+  .check svg { width: 12px; height: 12px; }
+  .cross svg { width: 10px; height: 10px; }
+
+  /* Hint visuel : effet de fade à droite pour suggérer le scroll */
+  .compare-inner {
+    position: relative;
+  }
+}
+
+@media (max-width: 600px) {
+  .compare { padding: 70px 14px; }
+  .compare-scroll { margin: 0 -14px; padding: 0 14px 10px; }
 }
 </style>
 <section class="compare" id="compare">
@@ -1112,6 +1300,7 @@ h1, h2, h3 {
       <h2>Frizz face à<br>la <em>concurrence</em>.</h2>
       <p>Les autres acteurs du marché ont leurs forces. Mais aucun ne réunit ce que Frizz fait pour <em>vingt-neuf euros</em> sans engagement.</p>
     </div>
+    <div class="compare-scroll">
     <div class="compare-table">
       <div class="compare-row head">
         <div class="compare-cell label">Comparé sur</div>
@@ -1283,6 +1472,7 @@ h1, h2, h3 {
         </div>
       </div>
     </div>
+    </div>
     <p class="compare-footnote">Données collectées sur les sites publics des éditeurs · Avril 2026.</p>
   </div>
 </section>
@@ -1350,7 +1540,7 @@ h1, h2, h3 {
   <p class="editorial-attr">— <em>La promesse Frizz</em></p>
 </section>
 
-<!-- === PRICING (style Apple specs) === -->
+<!-- === PRICING === -->
 <style>
 .pricing {
   padding: 140px 28px;
@@ -1399,7 +1589,6 @@ h1, h2, h3 {
   color: var(--blue);
 }
 
-/* Card pricing — style Apple précis avec touche Claude */
 .pricing-card {
   background: var(--bg);
   border: 1px solid var(--rule-2);
@@ -1743,7 +1932,7 @@ h1, h2, h3 {
     </div>
     <div class="footer-bottom">
       <span>© 2026 Frizz. Tous droits réservés.</span>
-      <span>Conçu en <em>Suisse</em> 🇨🇭</span>
+      <span>Conçu en <em>France</em> 🇫🇷</span>
     </div>
   </div>
 </footer>
