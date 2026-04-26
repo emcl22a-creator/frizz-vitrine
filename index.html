@@ -317,7 +317,6 @@ h1, h2, h3 {
   transform: translateY(-1px);
 }
 @media (max-width: 760px) {
-  .nav { padding: 12px 20px; }
   .nav-links { display: none; }
 }
 
@@ -498,7 +497,7 @@ h1, h2, h3 {
 /* Tablettes */
 @media (max-width: 960px) {
   .hero {
-    padding: 80px 20px 30px;
+    padding: 80px 24px 30px;
   }
   .hero h1 {
     font-size: clamp(46px, 8vw, 74px);
@@ -529,18 +528,18 @@ h1, h2, h3 {
     font-size: 12.5px;
   }
   .hero h1 {
-    font-size: clamp(40px, 10vw, 56px);
-    margin-bottom: 18px;
+    font-size: clamp(38px, 9.5vw, 54px);
+    margin-bottom: 20px;
     line-height: 1.02;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.045em;
   }
   .hero h1 br {
     display: none;
   }
   .hero-lede {
-    font-size: 15.5px;
-    margin-bottom: 20px;
-    line-height: 1.45;
+    font-size: 17px;
+    margin-bottom: 24px;
+    line-height: 1.5;
   }
   .btn-primary, .btn-ghost {
     padding: 10px 18px;
@@ -606,7 +605,7 @@ h1, h2, h3 {
   <div class="hero-inner">
     <h1>Une nouvelle façon<br>de <em>servir</em>.</h1>
     <p class="hero-lede">
-      Vos clients commandent depuis leur téléphone. Vos serveurs gagnent <em>vingt minutes</em> par service. Votre cuisine reçoit chaque commande en temps réel. Et vous, vous voyez tout depuis votre tableau de bord.
+      Vos clients commandent. Vos serveurs gagnent <em>vingt minutes</em> par service. Vous voyez tout, en temps réel.
     </p>
     <div class="hero-actions">
       <a href="#tarif" class="btn-primary">
@@ -881,14 +880,13 @@ h1, h2, h3 {
   .feature-grid {
     grid-template-columns: 1fr;
     gap: 60px;
-    padding: 0 20px;
   }
   .feature.reverse .feature-grid > div:first-child { order: unset; }
   .feature-visual { min-height: auto; padding: 30px 0; }
   .feature-tag { display: none; }
   .feature-num { font-size: 50px; margin-bottom: 24px; }
   .feature-text h2 {
-    font-size: clamp(34px, 7.5vw, 56px);
+    font-size: clamp(30px, 7vw, 46px);
   }
 }
 @media (max-width: 600px) {
@@ -907,13 +905,13 @@ h1, h2, h3 {
       <span class="feature-num">01</span>
       <h2>Le service<br><em>réinventé</em>.</h2>
       <p class="feature-lede">
-        Une vue d'ensemble instantanée. Vos serveurs voient l'état de chaque table, savent qui attend l'addition, qui est prêt à être servi, et peuvent prendre une commande directement quand le client préfère parler à un humain.
+        Toutes vos tables. Un seul écran. Vos serveurs savent tout, en un regard.
       </p>
       <ul class="feature-list">
-        <li><span class="feature-list-num">i.</span><span>Toutes les tables visibles en un seul écran, avec leur état coloré</span></li>
-        <li><span class="feature-list-num">ii.</span><span>Le serveur peut prendre la commande quand le client n'a pas son téléphone</span></li>
-        <li><span class="feature-list-num">iii.</span><span>Marquer une table payée en un seul tap — elle redevient libre</span></li>
-        <li><span class="feature-list-num">iv.</span><span>Notification immédiate quand le client demande l'addition</span></li>
+        <li><span class="feature-list-num">i.</span><span>Toutes vos tables, état en couleur</span></li>
+        <li><span class="feature-list-num">ii.</span><span>Commande par client ou serveur, au choix</span></li>
+        <li><span class="feature-list-num">iii.</span><span>Table libérée en un tap</span></li>
+        <li><span class="feature-list-num">iv.</span><span>Demande d'addition en direct</span></li>
       </ul>
     </div>
     <div class="feature-visual">
@@ -939,13 +937,13 @@ h1, h2, h3 {
       <span class="feature-num">02</span>
       <h2>Un QR code<br>par <em>table</em>.</h2>
       <p class="feature-lede">
-        Chaque table reçoit son propre QR unique. Le client scanne, voit votre carte, commande. Pas d'application à télécharger. Pas de friction. Pas d'inscription.
+        Le client scanne, voit votre carte, commande. Sans app. Sans compte. Sans friction.
       </p>
       <ul class="feature-list">
-        <li><span class="feature-list-num">i.</span><span>Vous créez vos tables (T1, T2, Terrasse 4) en 30 secondes</span></li>
-        <li><span class="feature-list-num">ii.</span><span>Frizz génère automatiquement un QR unique pour chaque table</span></li>
-        <li><span class="feature-list-num">iii.</span><span>Imprimez et placez sur les tables (chevalets, autocollants, sous-verres)</span></li>
-        <li><span class="feature-list-num">iv.</span><span>Chaque scan ouvre votre menu en moins d'une seconde</span></li>
+        <li><span class="feature-list-num">i.</span><span>Tables créées en 30 secondes</span></li>
+        <li><span class="feature-list-num">ii.</span><span>QR codes générés automatiquement</span></li>
+        <li><span class="feature-list-num">iii.</span><span>Imprimez, collez, c'est fini</span></li>
+        <li><span class="feature-list-num">iv.</span><span>Menu ouvert en moins d'une seconde</span></li>
       </ul>
     </div>
     <div class="feature-visual">
@@ -971,13 +969,13 @@ h1, h2, h3 {
       <span class="feature-num">03</span>
       <h2>La cuisine,<br>en <em>temps réel</em>.</h2>
       <p class="feature-lede">
-        Un écran dédié dans votre cuisine affiche les commandes au fur et à mesure. Le chef sait quoi préparer en priorité. Plus de tickets papier, plus de cris au passe, plus d'erreurs.
+        Un écran. Toutes les commandes. Plus de papier, plus de cris au passe, plus d'erreurs.
       </p>
       <ul class="feature-list">
-        <li><span class="feature-list-num">i.</span><span>Commandes affichées dans l'ordre d'arrivée, en grand format lisible</span></li>
-        <li><span class="feature-list-num">ii.</span><span>Trois statuts simples : en attente, en cours, prête</span></li>
-        <li><span class="feature-list-num">iii.</span><span>Notifications sonores activables pour les nouvelles commandes</span></li>
-        <li><span class="feature-list-num">iv.</span><span>Numéro de table en grand, notes spéciales du client en évidence</span></li>
+        <li><span class="feature-list-num">i.</span><span>Commandes par ordre d'arrivée</span></li>
+        <li><span class="feature-list-num">ii.</span><span>Trois statuts : nouvelle, en cours, prête</span></li>
+        <li><span class="feature-list-num">iii.</span><span>Alertes sonores activables</span></li>
+        <li><span class="feature-list-num">iv.</span><span>Notes du client mises en évidence</span></li>
       </ul>
     </div>
     <div class="feature-visual">
@@ -1001,15 +999,15 @@ h1, h2, h3 {
   <div class="feature-grid">
     <div class="feature-text">
       <span class="feature-num">04</span>
-      <h2>Comprenez<br>votre <em>chiffre</em>.</h2>
+      <h2>Vos chiffres,<br>sans <em>Excel</em>.</h2>
       <p class="feature-lede">
-        Votre tableau de bord vous montre tout : chiffre d'affaires, panier moyen, plats les plus vendus, heures de pointe. En temps réel. Sans Excel. Avec un résumé intelligent généré chaque semaine.
+        Chiffre d'affaires, panier moyen, plats stars. En direct. Avec un résumé IA chaque semaine.
       </p>
       <ul class="feature-list">
-        <li><span class="feature-list-num">i.</span><span>Chiffre d'affaires en direct — jour, semaine, mois</span></li>
-        <li><span class="feature-list-num">ii.</span><span>Panier moyen, couverts servis, plats les plus commandés</span></li>
-        <li><span class="feature-list-num">iii.</span><span>Graphique du CA, lissé et lisible en un coup d'œil</span></li>
-        <li><span class="feature-list-num">iv.</span><span>Résumé intelligent généré par IA chaque semaine</span></li>
+        <li><span class="feature-list-num">i.</span><span>CA en temps réel : jour, semaine, mois</span></li>
+        <li><span class="feature-list-num">ii.</span><span>Panier moyen et top des ventes</span></li>
+        <li><span class="feature-list-num">iii.</span><span>Graphiques lisibles d'un regard</span></li>
+        <li><span class="feature-list-num">iv.</span><span>Résumé IA hebdomadaire</span></li>
       </ul>
     </div>
     <div class="feature-visual">
@@ -1243,7 +1241,7 @@ h1, h2, h3 {
 }
 
 @media (max-width: 960px) {
-  .compare { padding: 90px 20px; }
+  .compare { padding: 90px 28px; }
   .compare-header { margin-bottom: 50px; }
 
   /* Wrapper qui permet le scroll horizontal du tableau */
@@ -1251,8 +1249,8 @@ h1, h2, h3 {
     overflow-x: auto;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
-    margin: 0 -20px;
-    padding: 0 20px 12px;
+    margin: 0 -28px;
+    padding: 0 28px 12px;
     scrollbar-width: thin;
   }
   .compare-scroll::-webkit-scrollbar {
@@ -1316,8 +1314,8 @@ h1, h2, h3 {
   <div class="compare-inner">
     <div class="compare-header">
       <span class="compare-num">05</span>
-      <h2>Frizz face à<br>la <em>concurrence</em>.</h2>
-      <p>Les autres acteurs du marché ont leurs forces. Mais aucun ne réunit ce que Frizz fait pour <em>vingt-neuf euros</em> sans engagement.</p>
+      <h2>Pourquoi <em>Frizz</em>.</h2>
+      <p>Tout ce que les autres facturent à part. Pour <em>29 euros</em>. Sans engagement.</p>
     </div>
     <div class="compare-scroll">
     <div class="compare-table">
@@ -1549,9 +1547,6 @@ h1, h2, h3 {
   font-style: italic;
   color: var(--blue);
 }
-@media (max-width: 600px) {
-  .editorial { padding: 90px 20px; }
-}
 </style>
 <section class="editorial">
   <p class="editorial-quote">
@@ -1735,7 +1730,7 @@ h1, h2, h3 {
 }
 
 @media (max-width: 960px) {
-  .pricing { padding: 80px 20px; }
+  .pricing { padding: 80px 28px; }
   .pricing-inner {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -1743,14 +1738,18 @@ h1, h2, h3 {
   .pricing-left { position: static; }
   .pricing-card { padding: 36px 28px; }
   .pricing-amount { font-size: 82px; }
+  .pricing-card-name { font-size: 22px; padding-bottom: 22px; margin-bottom: 26px; }
+  .pricing-card-eyebrow { font-size: 15px; }
+  .pricing-list li { font-size: 15px; padding: 14px 0; }
+  .pricing-card { padding: 32px 24px; }
 }
 </style>
 <section class="pricing" id="tarif">
   <div class="pricing-inner">
     <div class="pricing-left">
       <span class="feature-num">06</span>
-      <h2>Un seul prix.<br><em>Tout</em> compris.</h2>
-      <p>Pas de modules en plus. Pas d'engagement de durée. Pas de surprise sur la facture. Vous restez tant que <em>ça vous sert</em>.</p>
+      <h2>Un prix.<br><em>Tout</em> dedans.</h2>
+      <p>Pas d'extras. Pas d'engagement. Vous restez tant que <em>ça vous sert</em>.</p>
     </div>
     <div class="pricing-card">
       <div class="pricing-card-eyebrow">L'offre fondateur</div>
@@ -1761,13 +1760,13 @@ h1, h2, h3 {
         <span class="pricing-period">par mois HT</span>
       </div>
       <ul class="pricing-list">
-        <li><span class="pricing-list-bullet">i.</span><span>Menu client illimité — autant de plats que vous voulez</span></li>
+        <li><span class="pricing-list-bullet">i.</span><span>Menu client illimité</span></li>
         <li><span class="pricing-list-bullet">ii.</span><span>Tables &amp; QR codes illimités</span></li>
-        <li><span class="pricing-list-bullet">iii.</span><span>Mode service inclus pour tous vos serveurs</span></li>
-        <li><span class="pricing-list-bullet">iv.</span><span>Écran cuisine inclus, sur autant d'appareils que nécessaire</span></li>
-        <li><span class="pricing-list-bullet">v.</span><span>Statistiques et analyse en temps réel</span></li>
+        <li><span class="pricing-list-bullet">iii.</span><span>Mode service pour toute l'équipe</span></li>
+        <li><span class="pricing-list-bullet">iv.</span><span>Écran cuisine sur tous vos appareils</span></li>
+        <li><span class="pricing-list-bullet">v.</span><span>Stats temps réel + résumé IA</span></li>
         <li><span class="pricing-list-bullet">vi.</span><span>Mise en place &amp; formation incluses</span></li>
-        <li><span class="pricing-list-bullet">vii.</span><span>Support direct par le créateur de l'application</span></li>
+        <li><span class="pricing-list-bullet">vii.</span><span>Support direct par le créateur</span></li>
       </ul>
       <a href="mailto:Frizz.avis@gmail.com" class="pricing-cta">Démarrer mon mois gratuit</a>
       <p class="pricing-note">Aucune carte bancaire requise.</p>
@@ -1830,13 +1829,10 @@ h1, h2, h3 {
   justify-content: center;
   flex-wrap: wrap;
 }
-@media (max-width: 600px) {
-  .cta-final { padding: 100px 20px 70px; }
-}
 </style>
 <section class="cta-final" id="contact">
-  <h2>Prêt à <em>moderniser</em><br>votre service&nbsp;?</h2>
-  <p>Je viens chez vous, on regarde votre carte ensemble, je vous montre l'application sur votre téléphone. Trente minutes. Sans engagement.</p>
+  <h2>Prêt à <em>moderniser</em>&nbsp;?</h2>
+  <p>30 minutes chez vous. Sans engagement. Vous décidez après.</p>
   <div class="cta-final-buttons">
     <a href="#tarif" class="btn-primary">
       Voir le tarif
@@ -1916,7 +1912,6 @@ h1, h2, h3 {
   color: var(--blue);
 }
 @media (max-width: 760px) {
-  .footer { padding: 60px 20px 30px; }
   .footer-top {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -1928,7 +1923,7 @@ h1, h2, h3 {
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#" class="logo">Frizz<span class="logo-star">✦</span></a>
-        <p>Le menu QR pensé pour les vrais restaurants — et pour ceux qui les font tourner.</p>
+        <p>Le QR menu pensé pour les vrais restaurants.</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Produit</div>
