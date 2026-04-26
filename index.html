@@ -38,7 +38,12 @@
   --t-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
@@ -48,6 +53,7 @@ body {
   font-size: 17px;
   line-height: 1.5;
   overflow-x: hidden;
+  width: 100%;
   font-feature-settings: 'cv11', 'ss01';
   position: relative;
 }
@@ -603,7 +609,7 @@ h1, h2, h3 {
 <!-- === HERO === -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Une nouvelle façon<br>de <em>servir</em>.</h1>
+    <h1>Une nouvelle façon <br>de <em>servir</em>.</h1>
     <p class="hero-lede">
       Vos clients commandent. Vos serveurs gagnent <em>vingt minutes</em> par service. Vous voyez tout, en temps réel.
     </p>
@@ -903,7 +909,7 @@ h1, h2, h3 {
   <div class="feature-grid">
     <div class="feature-text">
       <span class="feature-num">01</span>
-      <h2>Le service<br><em>réinventé</em>.</h2>
+      <h2>Le service <br><em>réinventé</em>.</h2>
       <p class="feature-lede">
         Toutes vos tables. Un seul écran. Vos serveurs savent tout, en un regard.
       </p>
@@ -935,7 +941,7 @@ h1, h2, h3 {
   <div class="feature-grid">
     <div class="feature-text">
       <span class="feature-num">02</span>
-      <h2>Un QR code<br>par <em>table</em>.</h2>
+      <h2>Un QR code <br>par <em>table</em>.</h2>
       <p class="feature-lede">
         Le client scanne, voit votre carte, commande. Sans app. Sans compte. Sans friction.
       </p>
@@ -967,7 +973,7 @@ h1, h2, h3 {
   <div class="feature-grid">
     <div class="feature-text">
       <span class="feature-num">03</span>
-      <h2>La cuisine,<br>en <em>temps réel</em>.</h2>
+      <h2>La cuisine, <br>en <em>temps réel</em>.</h2>
       <p class="feature-lede">
         Un écran. Toutes les commandes. Plus de papier, plus de cris au passe, plus d'erreurs.
       </p>
@@ -999,7 +1005,7 @@ h1, h2, h3 {
   <div class="feature-grid">
     <div class="feature-text">
       <span class="feature-num">04</span>
-      <h2>Vos chiffres,<br>sans <em>Excel</em>.</h2>
+      <h2>Vos chiffres, <br>sans <em>Excel</em>.</h2>
       <p class="feature-lede">
         Chiffre d'affaires, panier moyen, plats stars. En direct. Avec un résumé IA chaque semaine.
       </p>
@@ -1502,6 +1508,7 @@ h1, h2, h3 {
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   position: relative;
+  overflow: hidden;
   background: var(--paper);
 }
 .editorial::before {
@@ -1748,7 +1755,7 @@ h1, h2, h3 {
   <div class="pricing-inner">
     <div class="pricing-left">
       <span class="feature-num">06</span>
-      <h2>Un prix.<br><em>Tout</em> dedans.</h2>
+      <h2>Un prix. <br><em>Tout</em> dedans.</h2>
       <p>Pas d'extras. Pas d'engagement. Vous restez tant que <em>ça vous sert</em>.</p>
     </div>
     <div class="pricing-card">
