@@ -322,6 +322,26 @@ h1, h2, h3 {
   background: var(--blue);
   transform: translateY(-1px);
 }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-link-login {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.25s var(--t-fast);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+.nav-link-login:hover { color: var(--blue); }
+@media (max-width: 480px) {
+  .nav-actions { gap: 12px; }
+  .nav-link-login { font-size: 12.5px; }
+  .nav-cta { padding: 7px 14px; font-size: 12.5px; }
+}
 @media (max-width: 760px) {
   .nav-links { display: none; }
 }
@@ -602,19 +622,22 @@ h1, h2, h3 {
       <a href="#patron" class="nav-link">Patron</a>
       <a href="#tarif" class="nav-link">Tarif</a>
     </div>
-    <a href="#tarif" class="nav-cta">Démarrer</a>
+    <div class="nav-actions">
+      <a href="login.html" class="nav-link-login">Se connecter</a>
+      <a href="login.html" class="nav-cta">Démarrer</a>
+    </div>
   </div>
 </nav>
 
 <!-- === HERO === -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Votre restaurant <br>tient dans un <em>QR</em>.</h1>
+    <h1>Le menu QR qui <br><em>fait tourner</em> votre restaurant.</h1>
     <p class="hero-lede">
       Frizz remplace votre menu papier, votre carnet de commande, votre écran cuisine et vos stats. Le client scanne. Tout le reste suit. <em>Vingt minutes</em> gagnées par service.
     </p>
     <div class="hero-actions">
-      <a href="#tarif" class="btn-primary">
+      <a href="inscription.html" class="btn-primary">
         Premier mois gratuit
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -1972,7 +1995,7 @@ h1, h2, h3 {
         <li><span class="pricing-list-bullet">vi.</span><span>Mise en place &amp; formation incluses</span></li>
         <li><span class="pricing-list-bullet">vii.</span><span>Support direct par le créateur</span></li>
       </ul>
-      <a href="mailto:Frizz.avis@gmail.com" class="pricing-cta">Démarrer mon mois gratuit</a>
+      <a href="inscription.html" class="pricing-cta">Démarrer mon mois gratuit</a>
       <p class="pricing-note">Aucune carte bancaire requise.</p>
     </div>
   </div>
@@ -2143,8 +2166,8 @@ h1, h2, h3 {
         <div class="footer-col-title">Entreprise</div>
         <ul>
           <li><a href="#tarif">Tarif</a></li>
-          <li><a href="#contact">Démonstration</a></li>
-          <li><a href="mailto:Frizz.avis@gmail.com">Contact</a></li>
+          <li><a href="inscription.html">Démonstration</a></li>
+          <li><a href="mailto:Frizz.avis@gmail.com?subject=Demande%20d%27information%20Frizz">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
