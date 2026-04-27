@@ -481,14 +481,19 @@ h1, h2, h3 {
 }
 
 .hero-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   margin-top: 40px;
   padding-top: 22px;
   border-top: 1px solid var(--rule);
   max-width: 560px;
 }
 .hero-meta-item {
-  padding: 0;
+  padding: 0 22px;
+  border-right: 1px solid var(--rule);
 }
+.hero-meta-item:first-child { padding-left: 0; }
+.hero-meta-item:last-child { border-right: 0; padding-right: 0; }
 .hero-meta-label {
   font-size: 10.5px;
   font-weight: 500;
@@ -626,7 +631,7 @@ h1, h2, h3 {
 <!-- === HERO === -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Tout votre service. <br>Dans un <em>téléphone</em>.</h1>
+    <h1>Un seul outil. <br>Tout <em>votre service</em>.</h1>
     <p class="hero-lede">
       Frizz remplace votre menu papier, votre carnet de commande, votre écran cuisine et vos stats. Le client scanne. Tout le reste suit. <em>Vingt minutes</em> gagnées par service.
     </p>
@@ -639,6 +644,10 @@ h1, h2, h3 {
     </div>
 
     <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Offre lancement</div>
+        <div class="hero-meta-value"><em>29 €</em> par mois</div>
+      </div>
       <div class="hero-meta-item">
         <div class="hero-meta-label">Engagement</div>
         <div class="hero-meta-value"><em>Aucun</em>, sans condition</div>
@@ -1109,7 +1118,7 @@ h1, h2, h3 {
       <span class="feature-num">01</span>
       <h2>Côté <em>client</em>.</h2>
       <p class="feature-lede">
-        Scan, menu, commande. Pas d'app. Pas de compte. <em>Cinq langues</em> détectées toutes seules.
+        Le client scanne, voit votre carte, commande. Pas d'app, pas de compte, pas de friction. <em>Cinq langues</em> détectées automatiquement.
       </p>
       <ul class="feature-list">
         <li><span class="feature-list-num">i.</span><span>Scan QR, menu instantané sans app</span></li>
